@@ -1,18 +1,18 @@
 # Changing Your Git Author Identity
 There are three ways to change your committer identity in Git. All of these methods only affect future commits, not past ones!
-## Changing Your Committer Name & Email Globally
+### Changing Your Committer Name & Email Globally
 You can run the "git config" command with the --global flag; this will make sure all of your future commits use the given information:
 ```
 $ git config --global user.name "John Doe"
 $ git config --global user.email "john@doe.org"
 ```
-## Changing Your Committer Name & Email per Repository
+### Changing Your Committer Name & Email per Repository
 If you want to use special settings only when working in a certain repository, you can simply omit the --global flag. This makes the configuration valid only in that repository:
 ```
 $ git config user.name "John Doe"
 $ git config user.email "john@doe.org"
 ```
-## Changing the Author Information Just for the Next Commit
+### Changing the Author Information Just for the Next Commit
 Finally, with the --author flag, you can also overwrite the author information for just the next commit:
 ```
 $ git commit --author="John Doe <john@doe.org>"
@@ -26,13 +26,13 @@ https://www.git-tower.com/learn/git/faq/change-author-name-email
   
 # Editing the Author of Past Commits
 If we do this, we are effectively rewriting commit history. This is nothing to take lightly: you will create new commit objects in this process, which can become a serious problem for your collaborators - because they might have already based new work on some of the original commits. Therefore, think twice before you rewrite your commit history!  
-## Using `--amend` for the Very Last Commit
+### Using `--amend` for the Very Last Commit
 In case you want to change just the very last commit, Git offers a very easy way to do this:
 ```
 $ git commit --amend --author="John Doe <john@doe.org>"
 ```
 This effectively replaces the last commit with your "edited" version, correcting the wrong author information.
-## Using Interactive Rebase
+### Using Interactive Rebase
 Interactive Rebase is the Swiss Army Knife of tools in Git: it allows you to do and change almost anything. Use it with care!  
 
 ----
@@ -58,7 +58,7 @@ Your job, now, is to correct the author information and then continue to the nex
 $ git commit --amend --author="Nilson Molina <nmolina@student.42.us.org>" --no-edit
 $ git rebase --continue
 ```
-## Using `git filter-branch`
+### Using `git filter-branch`
 Another way is to use Git's "filter-branch" command. It allows you to batch-process a (potentially large) number of commits with a script.  
 
 You can run the below sample script in your repository (filling in real values for the old and new email and name):
