@@ -23,6 +23,9 @@ $ git config --global user.email nmolina@student.42.us.org
 $ git config --global -l
 ``` 
 ```
+$ sudo apt-get install vim
+```
+```
 $ sudo apt-get install valgrind
 ```
 
@@ -66,7 +69,44 @@ vboxguest             282624  8 vboxsf,vboxvideo
 Reference:  
 https://www.hiroom2.com/2017/07/02/debian-9-vbox-guest-additions-en/
 
+## Add Shared Folder to Debian Virtual Machine
+For VirtualBox with a Linux guest, there are a few steps to mount a shared folder.In order to use shared folder functionality few prerequisites need to be met:
+
+- Make sure that Guest Additions are properly installed on the guest OS.
+- Users in a guest Ubuntu must be in the group vboxsf to be able to access shares.
+- Define a directory on the host that will be used in the virtual machine using the settings dialogue of Virtual Box.
+- Do not share personal folders like /home/username or My Documents.
+- Avoid special characters or empty spaces in the path to the shared folder
+- Use different names for share and mountpoint.
+- Create a mountpoint on the guest OS (best in your HOME directory).
+
+Testing shared folders functionality can thus be done by creating a shared directory on the host (e.g. ~/share), define this as a shared folder for your guest system in Virtual Box settings, create a mount point in your guest os (e.g.  mkdir ~/host) and mount this in the guest OS with the command:
+```
+$ sudo mount -t vboxsf -o rw,uid=1000,gid=1000 share ~/host
+```
+
+Now it works!  Unfortunately, a restart unmounts the shared folder.  So a workaround is to have the mount command run on login.
+
+1. Create a file for your login script and save your script in `/etc/profile.d/`
+```
+$ sudo vim /etc/profile.d/<NAME_OF_SCRIPT>
+```
+**Example script**
+```
+#!/bin/sh
+sudo mount -t vboxsf -o rw,uid=1000,gid=1000 share ~/host
+```
+2. Make the script executable
+```
+sudo chmod 755 /etc/init.d/<NAME_OF_SCRIPT>
+```
+
+Reference:  
+https://askubuntu.com/questions/30396/error-mounting-virtualbox-shared-folders-in-an-ubuntu-guest
+
 # Install Valgrind on macOS High Sierra
+As of March 2018, Valgrind is **NOT** officially supported on macOS High Sierra.  However, we can get it to work if we build the current repo ourselves.  
+
 In order to do the build, you need automake, so let's install that first:
 ```
 $ brew install automake
