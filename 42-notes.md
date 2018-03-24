@@ -65,3 +65,28 @@ vboxguest             282624  8 vboxsf,vboxvideo
 
 Reference:  
 https://www.hiroom2.com/2017/07/02/debian-9-vbox-guest-additions-en/
+
+# Install Valgrind on macOS High Sierra
+In order to do the build, you need automake, so let's install that first:
+```
+$ brew install automake
+```
+After that, we can build the current valgrind repository:
+```
+$ git clone git://sourceware.org/git/valgrind.git
+$ cd valgrind
+$ ./autogen.sh
+$ ./configure --prefix=$HOME/.valgrind
+$ make
+$ make install
+```
+Valgrind is now built, and to start using it, we simply add it to our PATH environment:
+```
+$ vim .zshrc
+```
+> Add `$HOME/.valgrind/bin:` to the export PATH - you can put it before the `$PATH`
+
+Thats it! You can safely remove the git clone at this point and start using valgrind. 
+
+Reference:  
+http://valgrind.org/downloads/repository.html
