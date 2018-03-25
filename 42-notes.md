@@ -130,3 +130,9 @@ Thats it! You can safely remove the git clone at this point and start using valg
 
 Reference:  
 http://valgrind.org/downloads/repository.html
+
+# C Tips
+Show files in binary **(replace `libft.a` with your binary)**
+```
+ar -t libft.a
+```
