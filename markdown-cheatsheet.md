@@ -1,5 +1,93 @@
-# Markdown Cheatsheet
->The following was originally derived from [`Github user adam-p`](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) and has been edited to fit my specific needs.
+<!-- Headings -->
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4 
+##### Heading 5
+###### Heading 6
+
+<!-- Italics -->
+*This text* is italic
+
+_This text_ is italic
+
+<!-- Strong -->
+**This text** is strong
+
+__This text__ is strong
+
+<!-- Strikethrough -->
+~~This text~~ is strikethrough
+
+<!-- Links (can add title)-->
+[nilsonmolina github](http://github.com/nilsonmolina)
+
+[nilsonmolina github - (has hover title)](http://github.com/nilsonmolina "Lucky #13")
+
+
+<!-- UL -->
+* Item 1
+* Item 2
+* Item 3
+    * Nested Item 1
+    * Nested Item 2
+
+<!-- OL -->
+1. Item 1
+1. Item 2
+1. Item 3
+
+<!-- Images -->
+![Markdown Logo](https://markdown-here.com/img/icon128.png)
+
+<!-- Inline Code Block -->
+`<p>This is a paragraph</p>`
+
+<!-- Blockquote -->
+> This is a quote
+
+<!-- Horizontal Rule (requires proper spacing)-->
+
+---
+
+___
+
+<!--   ---------- Github Markdown ----------   -->
+<!-- Code Blocks -->
+```bash
+  #!/bin/bash
+  echo "Lucky #13"
+```
+
+```javascript
+  function add(num1, num2) {
+    return num1 + num2;
+  }
+```
+
+```python
+  def add(num1, num2):
+    return num1 + num2
+```
+
+<!-- Tables -->
+| Left Aligned   | Centered   | Right Aligned  |
+| -------------- | :--------: | -------------: |      
+| Nilson Molina  | nmolina    | 13,000.00      |
+| Linh Lam       | lilam      | 77,777.77      |
+| Edouard Duprat | eduprat    | 88,888.88      |
+| Mark Brown     | mbrown     | 22,000.13      |
+
+<!-- Task List -->
+* [x] Task 1
+* [x] Task 2
+* [ ] Task 3
+
+
+
+
+# Much More Details:
+>The following was originally derived from [**_Github user adam-p_**](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) and has been edited to fit my specific needs.
 
 This is intended as a quick reference and showcase. For more complete info, see [John Gruber's original spec](http://daringfireball.net/projects/markdown/) and the [Github-flavored Markdown info page](http://github.github.com/github-flavored-markdown/).
 
