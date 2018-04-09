@@ -7,6 +7,10 @@ List all folders, their size and give a total:
 ```
 $ du -hsc *
 ```
+Sort the list of all folders, their size the total: 
+```
+$ du -hsc * | sort -h
+```
 
 # Shutdown 
 To shutdown now
