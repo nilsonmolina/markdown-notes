@@ -83,15 +83,20 @@ This is a simple way of having a script run on startup:
     ```
 
 # Check System Utilization
-Check Top Processes
+**Check Top Processes**
 ```
 $ top
 ```
 - *Press `shift+e` to change KB to MB in memory section*
 - *Press `q` to quit*
 
-Check Memory Utilization
+**Check Memory Utilization**
 ```
 $ free -m
 ```
 
+**Watch**  
+Watch is used to run any designated command at regular intervals. The time interval between each report can be set using the `-n` flag followed by an integer that represents the desired number of seconds
+```
+$ watch -n 5 free -m
+```
