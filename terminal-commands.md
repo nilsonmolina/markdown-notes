@@ -12,6 +12,55 @@ Sort the list of all folders, their size the total:
 $ du -hsc * | sort -h
 ```
 
+# which
+The linux `which` command is used to find the location of a program.
+```
+$ which <program-name>
+```
+Example:
+```
+$ which gcc
+/usr/bin/gcc
+```
+
+# alias
+Aliases are a way to set keyboard shortcuts or abbreviations.  If you want it to be **permanent**, add the alias to your `~/.bash_profile` or `~/.zshrc`.
+
+Create a temp alias
+```
+$ alias <alias-name>=<command>
+```
+Remove an alias
+```
+$ unalias <alias-name>
+```
+See list of aliases
+```
+$ alias
+```
+
+Examples:
+```bash
+# Set an alias
+$ alias ll="ls -la"
+
+# Remove an alias
+$ unalias ll
+
+# See specific alias
+alias ll
+ll='ls -la'
+
+# See List of aliases
+$ alias
+g=git
+ga='git add'
+gaa='git add --all'
+.
+.
+.
+```
+
 # Shutdown 
 To shutdown now
 ```
