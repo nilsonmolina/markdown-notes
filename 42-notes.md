@@ -136,3 +136,49 @@ Show files in binary **(replace `libft.a` with your binary)**
 ```
 ar -t libft.a
 ```
+
+# Brew Issues
+My particular issue did not allow me to use brew.  It would complain that it was running an update process, but restarts and so forth would not work.  The problem turned out to be an issue with the sym links, so the following line fixed it for me:
+```
+ln -s /tmp/.$(whoami)-brew-locks $HOME/.brew/var/homebrew/locks
+``` 
+### Install Brew
+This is the process Marvin instructs to install brew on the iMacs:
+```
+mkdir $HOME/.brew && curl -fsSL https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/.brew
+mkdir -p /tmp/.$(whoami)-brew-locks
+mkdir -p $HOME/.brew/var/homebrew
+ln -s /tmp/.$(whoami)-brew-locks $HOME/.brew/var/homebrew/locks
+export PATH="$HOME/.brew/bin:$PATH"
+brew update && brew upgrade
+```
+And then we need to add the following to our zsh:
+```
+mkdir -p /tmp/.$(whoami)-brew-locks
+export PATH="$HOME/.brew/bin:$PATH"
+```
+
+# Docker
+Install docker using brew:
+```
+$ brew install docker docker-machine
+```
+
+### VboxManage Error
+If you get the following error when trying to run docker:
+```
+$ docker-machine create -d virtualbox Char
+Error with pre-create check: "VBoxManage not found. Make sure VirtualBox is installed and VBoxManage is in the path"
+```
+
+If you have VirtualBox installed already, then simply add the VBoxManage to your path:
+```
+export PATH=/Applications/Virtualbox.app/Contents/MacOS/:$PATH;
+```
+
+# Speed up zsh in iterm
+1. Open iTerm and open up **Preferences** (cmd+,)
+
+1. Click on **Profiles**
+
+1. In **General** look at the **Command** section, and in **Command** type in: `zsh`
