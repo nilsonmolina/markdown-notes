@@ -12,6 +12,39 @@ Sort the list of all folders, their size the total:
 $ du -hsc * | sort -h
 ```
 
+# SSD Health - (macOS)
+The flash memory in SSD's and NVME drives have a limited amount of write cycles before they become unstable. One way to check the health of an ssd is to see how many writes have performed on the drive and comparing that to the drives rated Total Bytes Written. On average, a small 256GB SSD has a TBW of 150TB.
+
+Install smartmontools
+```
+$ brew install smartmontools
+```
+Check SMART/Health information using the smartctl tool. The `Data Units Written` is what you want to be checking.
+```
+$ smartctl -a disk0
+
+=== START OF SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+SMART/Health Information (NVMe Log 0x02)
+Critical Warning:                   0x00
+Temperature:                        27 Celsius
+Available Spare:                    100%
+Available Spare Threshold:          99%
+Percentage Used:                    0%
+Data Units Read:                    24,551,572 [12.5 TB]
+Data Units Written:                 19,754,123 [10.1 TB]
+Host Read Commands:                 1,175,280,718
+Host Write Commands:                663,809,001
+Controller Busy Time:               0
+Power Cycles:                       67
+Power On Hours:                     535
+Unsafe Shutdowns:                   11
+Media and Data Integrity Errors:    0
+Error Information Log Entries:      0
+```
+
+
 # which
 The linux `which` command is used to find the location of a program.
 ```
