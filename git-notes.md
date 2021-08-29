@@ -1,5 +1,6 @@
 
 # Using Multiple GitHub accounts on single Machine
+**Read the note at the end of this section before starting**  
 I needed this in order to work on personal git repos on my work machine. These are the 4 steps required:
 1. Generate SSH key for the new account
 1. Attach this new key to your GitHub account
@@ -93,9 +94,24 @@ $ git remote set-url origin git@github.com-personal:nilsonmolina/markdown-notes.
 
 And thats it! Now you can push up any changes to this repo without any issues!
 
-
 **Reference**  
 https://www.freecodecamp.org/news/manage-multiple-github-accounts-the-ssh-way-2dadc30ccaca/
+
+## Notes
+**These steps will still use your work email/account.**
+
+Annoying since it shows that my work account is commiting to my personal projects. So to fix that, I'm switching to a different github user by simply changing my email:
+```bash
+# Check current git user
+$ git config user.email
+
+# Change to different git user
+$ git config user.emal 'molinanilson@gmail.com'
+
+# Not always necessary, but can also use the global flag
+$ git config --global user.email 'molinanilson@gmail.com'\
+```
+
 
 
 ---
