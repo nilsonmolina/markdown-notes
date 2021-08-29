@@ -94,6 +94,9 @@ $ git remote set-url origin git@github.com-personal:nilsonmolina/markdown-notes.
 And thats it! Now you can push up any changes to this repo without any issues!
 
 
+**Reference**  
+https://www.freecodecamp.org/news/manage-multiple-github-accounts-the-ssh-way-2dadc30ccaca/
+
 
 ---
 
