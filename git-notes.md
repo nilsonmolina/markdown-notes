@@ -105,14 +105,12 @@ Annoying since it shows that my work account is commiting to my personal project
 # Check current git user
 $ git config user.email
 
-# Change to different git user
+# Change to different git user for this repo only
 $ git config user.emal 'molinanilson@gmail.com'
 
-# Not always necessary, but can also use the global flag
+# Change to different git user for all repos
 $ git config --global user.email 'molinanilson@gmail.com'\
 ```
-
-
 
 ---
 
