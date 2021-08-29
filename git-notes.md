@@ -1,3 +1,103 @@
+
+# Using Multiple GitHub accounts on single Machine
+I needed this in order to work on personal git repos on my work machine. These are the 4 steps required:
+1. Generate SSH key for the new account
+1. Attach this new key to your GitHub account
+1. Create an SSH config file
+1. Set a new remote url for repos
+
+### Generate SSH Key
+Generate an SSH key with the following command. Be sure to replace with your own email address
+```bash
+$ cd ~/.ssh
+$ ssh-keygen -t rsa -C '<your-email>@gmail.com'
+```
+ You will then be asked for a file name and a password. Name it what you like and press enter twice to leave the password empty (feel free to use a password if you prefer). Below is some example output:
+ ```bash
+$ ssh-keygen -t rsa -C 'molinanilson@gmail.com'
+
+Generating public/private rsa key pair.
+Enter file in which to save the key (/Users/nmolina/.ssh/id_rsa): testing
+
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+
+Your identification has been saved in testing.
+Your public key has been saved in testing.pub.
+The key fingerprint is:
+SHA256:NcfQIkhY9bV15BfGyaliw0Gxf2fSO9wOY7GNlICcr4k molinanilson@gmail.com
+The key's randomart image is:
++---[RSA 3072]----+
+|     +oo. o+o ++=|
+|    . . .o.Boo.B.|
+|         .Oo* . o|
+|         . O.o o.|
+|        S . +.=.+|
+|         . o .oB+|
+|        E o   *+o|
+|             . +.|
+|                .|
++----[SHA256]-----+
+```
+
+### Attach this key to your GitHub Account
+1. Copy the public key w/ the following command:
+    ```bash
+    $ pbcopy < ~/.ssh/testing.pub
+    ```
+1. Sign in to your personal GitHub account
+1. Click on `Settings`
+1. Select `SSH and GPG keys` from the menu on the left
+1. Click on `New SSH Key` button and paste the key in
+1. Click `Add Key` - and you're done!
+---
+
+### Create an SSH config File
+Now we can set SSH configuration rules for different hosts. Feel free to change the `HOST`  and `IdentityFile` props to fit your needs.
+
+```bash
+$ cd ~/.ssh
+$ vim config
+
+
+# Work Github account - default config
+Host github.com
+        HostName github.com
+        User git
+        IdentityFile ~/.ssh/id_rsa
+
+# Personal Github account -
+Host github.com-personal
+        HostName github.com
+        User git
+        IdentityFile ~/.ssh/github_personal
+
+Host *
+    UseKeychain yes
+```
+
+### Set a new remote url
+Any git repos that you clone down from your personal github will require a new remote url in order to properly authenticate.
+```
+$ git clone git@github.com:nilsonmolina/markdown-notes.git
+
+$ git remote -v
+origin	git@github.com:nilsonmolina/markdown-notes.git (fetch)
+origin	git@github.com:nilsonmolina/markdown-notes.git (push)
+```
+
+Change the remote url to match the `HOST` prop you put in the SSH config file.
+```bash
+$ git remote set-url origin git@github.com-personal:nilsonmolina/markdown-notes.git
+```
+
+And thats it! Now you can push up any changes to this repo without any issues!
+
+
+
+---
+
+
 # Changing Your Git Author Identity
 There are three ways to change your committer identity in Git. All of these methods only affect future commits, not past ones!
 ### Changing Your Committer Name & Email Globally
@@ -22,6 +122,7 @@ Reference:
 https://www.git-tower.com/learn/git/faq/change-author-name-email
   
 
+---
 
   
 # Editing the Author of Past Commits
@@ -97,7 +198,7 @@ Reference:
 https://www.git-tower.com/learn/git/faq/change-author-name-email
 
 
-
+---
 
 # Merge Repositories
 Prep by making Repository B into a directory:
@@ -141,6 +242,9 @@ $ git push origin master
 
 Reference:  
 https://gist.github.com/msrose/2feacb303035d11d2d05
+
+
+---
 
 
 # Removing a File from Git Commit History
